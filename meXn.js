@@ -127,7 +127,7 @@ const createModels= (modells, dbname)=>{
             newModel(x)
         }
         var result = data.replace(/\/\/routes end/g, newroutesstring);
-        console.log(result)
+        // console.log(result)
         fs.writeFileSync('server.js', result, 'utf8', function (errw) {
             if (errw) return console.log(errw);
             console.log('Success!');
@@ -292,7 +292,7 @@ readline.question('DB name:', DBinput => {
             console.log('Saved!');
         }); 
         let serversc=`${fs.readFileSync('../meXn.js',{encoding:'utf8'}).split('//mkModel end')[0]}\n\n${mkModelFileRuntime(DBname)}\n\n//mkModel end`
-        console.log(serversc)
+        // console.log(serversc)
         fs.writeFileSync(`mkModels.js`, serversc, function (err) {
             if (err) throw err;
             console.log('Saved!');
