@@ -24,4 +24,5 @@ It'll ask you for the names of the models you would like to generate delimited b
 and make new files for the new models and update the server.js with the new routes for you.
 
 Not fully tested yet/work in progress
+
 Not sure if all restrictions on file/folder names are checked yet
