@@ -11,7 +11,7 @@ and install express, mongoose, and cors for you at the end.
 
 Then, navigate into each model and fill out the fields you want the model to have.
 
-To run the server, just cd into server, and type in
+To run the server, just cd into the server folder, and type in
 ```
 node server.js
 ```
