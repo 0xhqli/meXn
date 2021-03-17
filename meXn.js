@@ -3,6 +3,7 @@
 const modelFile=(model)=>{
     return(
 `const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
 const ${model[0].toUpperCase()+model.substring(1)}Schema = new mongoose.Schema({
     //Add model attributes here
 });
@@ -153,6 +154,7 @@ readline.question('Models to add seperated by spaces:', input => {
 const configFile=(db)=>{
     return (
 `const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
 mongoose.connect('mongodb://localhost/${db}', {
     useNewUrlParser: true,
     useUnifiedTopology: true
