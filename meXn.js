@@ -19,20 +19,20 @@ const controllerFile=(model)=>{
 module.exports.findAll${model[0].toUpperCase()+model.substring(1)}s = (req, res) => {
     ${model[0].toUpperCase()+model.substring(1)}.find()
         .then(allDa${model[0].toUpperCase()+model.substring(1)}s => res.json({ ${model}s: allDa${model[0].toUpperCase()+model.substring(1)}s }))
-        .catch(err => res.json({ message: 'Something went wrong', error: err }));
+        .catch(err => res.status(400).json({ message: 'Something went wrong', error: err }));
 };
 
 module.exports.findOneSingle${model[0].toUpperCase()+model.substring(1)} = (req, res) => {
     ${model[0].toUpperCase()+model.substring(1)}.findOne({ _id: req.params.id })
         .then(oneSingle${model[0].toUpperCase()+model.substring(1)} => res.json({ ${model}s: oneSingle${model[0].toUpperCase()+model.substring(1)} }))
-        .catch(err => res.json({ message: 'Something went wrong', error: err }));
+        .catch(err => res.status(400).json({ message: 'Something went wrong', error: err }));
 }
 
 module.exports.createNew${model[0].toUpperCase()+model.substring(1)} = (req, res) => {
     console.log(req.body)
     ${model[0].toUpperCase()+model.substring(1)}.create(req.body)
         .then(newlyCreated${model[0].toUpperCase()+model.substring(1)} => res.json({ ${model}: newlyCreated${model[0].toUpperCase()+model.substring(1)} }))
-        .catch(err => res.json({ message: 'Something went wrong', error: err }));
+        .catch(err => res.status(400).json({ message: 'Something went wrong', error: err }));
 }
 
 module.exports.updateExisting${model[0].toUpperCase()+model.substring(1)} = (req, res) => {
@@ -42,13 +42,13 @@ module.exports.updateExisting${model[0].toUpperCase()+model.substring(1)} = (req
         { new: true, runValidators: true }
     )
         .then(updated${model[0].toUpperCase()+model.substring(1)} => res.json({ ${model}: updated${model[0].toUpperCase()+model.substring(1)} }))
-        .catch(err => res.json({ message: 'Something went wrong', error: err }));
+        .catch(err => res.status(400).json({ message: 'Something went wrong', error: err }));
 }
 
 module.exports.deleteAnExisting${model[0].toUpperCase()+model.substring(1)} = (req, res) => {
     ${model[0].toUpperCase()+model.substring(1)}.deleteOne({ _id: req.params.id })
         .then(result => res.json({ result: result }))
-        .catch(err => res.json({ message: 'Something went wrong', error: err }));
+        .catch(err => res.status(400).json({ message: 'Something went wrong', error: err }));
 }`)
 }
 
