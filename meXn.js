@@ -6,7 +6,7 @@ const modelFile=(model)=>{
 mongoose.set('useFindAndModify', false);
 const ${model[0].toUpperCase()+model.substring(1)}Schema = new mongoose.Schema({
     //Add model attributes here
-});
+},{ timestamps: true });
 const ${model[0].toUpperCase()+model.substring(1)} = mongoose.model('${model[0].toUpperCase()+model.substring(1)}', ${model[0].toUpperCase()+model.substring(1)}Schema);
 module.exports = ${model[0].toUpperCase()+model.substring(1)};`)
 }
