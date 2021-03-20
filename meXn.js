@@ -16,40 +16,55 @@ const controllerFile=(model)=>{
     return (
 `const ${model[0].toUpperCase()+model.substring(1)} = require('../models/${model}.model');
 
-module.exports.findAll${model[0].toUpperCase()+model.substring(1)}s = (req, res) => {
-    ${model[0].toUpperCase()+model.substring(1)}.find()
-        .then(allDa${model[0].toUpperCase()+model.substring(1)}s => res.json({ ${model}s: allDa${model[0].toUpperCase()+model.substring(1)}s }))
-        .catch(err => res.status(400).json({ message: 'Something went wrong', error: err }));
-};
-
-module.exports.findOneSingle${model[0].toUpperCase()+model.substring(1)} = (req, res) => {
-    ${model[0].toUpperCase()+model.substring(1)}.findOne({ _id: req.params.id })
-        .then(oneSingle${model[0].toUpperCase()+model.substring(1)} => res.json({ ${model}s: oneSingle${model[0].toUpperCase()+model.substring(1)} }))
-        .catch(err => res.status(400).json({ message: 'Something went wrong', error: err }));
+module.exports.findAll${model[0].toUpperCase()+model.substring(1)}s = async (req, res) => {
+    try{
+        let ${model}s= await ${model[0].toUpperCase()+model.substring(1)}.find()
+        res.json({${model}s})
+    }
+    catch(error){
+        res.status(400).json({ message: 'Something went wrong', error})
+    }
 }
 
-module.exports.createNew${model[0].toUpperCase()+model.substring(1)} = (req, res) => {
-    console.log(req.body)
-    ${model[0].toUpperCase()+model.substring(1)}.create(req.body)
-        .then(newlyCreated${model[0].toUpperCase()+model.substring(1)} => res.json({ ${model}: newlyCreated${model[0].toUpperCase()+model.substring(1)} }))
-        .catch(err => res.status(400).json({ message: 'Something went wrong', error: err }));
+module.exports.findOneSingle${model[0].toUpperCase()+model.substring(1)} = async (req, res) => {
+    try{
+        let ${model}= await  ${model[0].toUpperCase()+model.substring(1)}.findOne({ _id: req.params.id })
+        res.json({${model}})
+    }
+    catch(error){
+        res.status(400).json({ message: 'Something went wrong', error})
+    }
 }
 
-module.exports.updateExisting${model[0].toUpperCase()+model.substring(1)} = (req, res) => {
-    ${model[0].toUpperCase()+model.substring(1)}.findOneAndUpdate(
-        { _id: req.params.id },
-        req.body,
-        { new: true, runValidators: true }
-    )
-        .then(updated${model[0].toUpperCase()+model.substring(1)} => res.json({ ${model}: updated${model[0].toUpperCase()+model.substring(1)} }))
-        .catch(err => res.status(400).json({ message: 'Something went wrong', error: err }));
+module.exports.createNew${model[0].toUpperCase()+model.substring(1)} = async (req, res) => {
+    try{
+        let ${model}= await ${model[0].toUpperCase()+model.substring(1)}.create(req.body)
+        res.json({${model}})
+    }
+    catch(error){
+        res.status(400).json({ message: 'Something went wrong', error})
+    }
 }
 
-module.exports.deleteAnExisting${model[0].toUpperCase()+model.substring(1)} = (req, res) => {
-    ${model[0].toUpperCase()+model.substring(1)}.deleteOne({ _id: req.params.id })
-        .then(result => res.json({ result: result }))
-        .catch(err => res.status(400).json({ message: 'Something went wrong', error: err }));
-}`)
+module.exports.updateExisting${model[0].toUpperCase()+model.substring(1)} = async (req, res) => {
+    try{
+        let ${model}= await ${model[0].toUpperCase()+model.substring(1)}.findOneAndUpdate({_id: req.params.id},req.body,{new: true, runValidators: true})
+        res.json({${model}})
+    }
+    catch(error){
+        res.status(400).json({ message: 'Something went wrong', error})
+    }
+}
+
+module.exports.deleteAnExisting${model[0].toUpperCase()+model.substring(1)} = async (req, res) => {
+    try{
+        let result= await ${model[0].toUpperCase()+model.substring(1)}.deleteOne({ _id: req.params.id })
+        res.json({ result: result })
+    }
+    catch(error){
+        res.status(400).json({ message: 'Something went wrong', error})
+    }
+        }`)
 }
 
 //route template
