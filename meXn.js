@@ -18,8 +18,8 @@ const controllerFile=(model)=>{
 
 module.exports.findAll${model[0].toUpperCase()+model.substring(1)}s = async (req, res) => {
     try{
-        let ${model}s= await ${model[0].toUpperCase()+model.substring(1)}.find()
-        res.json({${model}s})
+        let ${model}= await ${model[0].toUpperCase()+model.substring(1)}.find()
+        res.json({${model}})
     }
     catch(error){
         res.status(400).json({ message: 'Something went wrong', error})
