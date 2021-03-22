@@ -1,5 +1,5 @@
-A script to quickly create an api server with model templates for use with MongoDB, Express, and Mongoose.
-to use, drop the script into the directory you would like the server to be made in, then from terminal/cmd
+A script to quickly create a base api server with model templates using MongoDB, Express, and Mongoose.
+To use, drop the script into the directory you would like the server to be made in, then from terminal/cmd
 navigate to the directory and type in
 ```
 node meXn.js
